@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "name": "Company",
+    "uname": "company1",
+    "pword": "password",
+    "phone": "2424",
+    "email": "email@email.com",
+    "technologies": []
+  },
+  {
+    "name": "Company2",
+    "uname": "company2",
+    "pword": "password",
+    "phone": "2424",
+    "email": "email@email.com",
+    "technologies": []
+  }
+]

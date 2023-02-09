@@ -7,6 +7,7 @@ const homePage = (req, res) => {
 const hireDeveloper = (req, res) => {
   fs.readFile("companies.json", "utf-8", (err, data) => {
     if (err) throw err;
+    console.log(data);
     let existingData = JSON.parse(data);
     existingData.push(req.body);
     existingData = JSON.stringify(existingData);
