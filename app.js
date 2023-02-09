@@ -3,10 +3,10 @@ const app = express();
 const cors = require("cors");
 const PageController = require("./controllers/PageController");
 
+app.use(cors());
 app.use(express.json());
 //required when using form
 app.use(express.urlencoded());
-app.use(cors());
 
 //paths
 app.get("/", PageController.homePage);

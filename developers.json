@@ -1,8 +1,20 @@
 [
   {
-    "name": "dsfs",
-    "phone": "2342423",
-    "email": "fdsfds@gmail.com",
+    "name": "sdsad",
+    "phone": "123213",
+    "email": "fds@gmail.com",
     "technologies": ["reactjs", "nodejs", "expressjs"]
+  },
+  {
+    "name": "sdsad",
+    "phone": "123213",
+    "email": "fds@gmail.com",
+    "technologies": ["nodejs", "expressjs"]
+  },
+  {
+    "name": "sdsad",
+    "phone": "123213",
+    "email": "fds@gmail.com",
+    "technologies": ["nodejs"]
   }
 ]
