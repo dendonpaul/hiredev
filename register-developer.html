@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register As Developers</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/register-developer">Register Developer</a></li>
+        <li><a href="/hire-developer">Hire Developer</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
+
+    <h2>Register as Developer</h2>
+    <form id="register-dev" action="http://localhost:5001/register-developer" method="post">
+        <label for="name">Full name</label>
+        <input type="text" name="name" id="name">
+        <label for="phone">Phone</label>
+        <input type="tel" name="phone" id="phone">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <label for="technologies">Choose Techs</label>
+        <select id="technologies" name="technologies" multiple>
+            <option value="reactjs">React JS</option>
+            <option value="nodejs">Node JS</option>
+            <option value="expressjs">Express JS</option>
+        </select>
+        <input type="submit" value="Register" id="registerBtn">
+    </form>
+    <script src="script.js"></script>
+</body>
+
+</html>
