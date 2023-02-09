@@ -16,7 +16,8 @@ document.getElementById("register-dev").addEventListener("submit", (e) => {
     .post(url, formDataJson)
     .then(function (response) {
       console.log(response.data.message);
-      e.target.textContent = response.data.message;
+      //   e.target.innerHTML = response.data.message;
+      window.location.href = "thankyou.html";
     })
     .catch(function (error) {
       console.log(error);

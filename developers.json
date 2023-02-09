@@ -1,20 +1,26 @@
 [
   {
-    "name": "sdsad",
-    "phone": "123213",
-    "email": "fds@gmail.com",
-    "technologies": ["reactjs", "nodejs", "expressjs"]
+    "name": "Developer 1",
+    "uname": "dev1",
+    "pword": "password",
+    "phone": "123234324",
+    "email": "dev1@gmail.com",
+    "technologies": ["reactjs", "nodejs"]
   },
   {
-    "name": "sdsad",
-    "phone": "123213",
-    "email": "fds@gmail.com",
+    "name": "Developer 2",
+    "uname": "dev2",
+    "pword": "password",
+    "phone": "123234324",
+    "email": "dev2@gmail.com",
     "technologies": ["nodejs", "expressjs"]
   },
   {
-    "name": "sdsad",
-    "phone": "123213",
-    "email": "fds@gmail.com",
-    "technologies": ["nodejs"]
+    "name": "Developer 3",
+    "uname": "dev3",
+    "pword": "password",
+    "phone": "123234324",
+    "email": "dev3@gmail.com",
+    "technologies": ["reactjs", "nodejs", "expressjs"]
   }
 ]

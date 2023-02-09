@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>HireDeveloper.com</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/register-developer.html">Register Developer</a></li>
+        <li><a href="/hire-developer.html">Hire Developer</a></li>
+        <li><a href="/login.html">Login</a></li>
+    </ul>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <label for="role">Login As: </label>
+        <select id="role" name="role">
+            <option value="developer">Developer</option>
+            <option value="company">Company</option>
+            <option value="admin">Admin</option>
+        </select>
+        <input type="submit" value="Login" id="loginBtn">
+    </form>
+
+    <br />
+    <a href="/register-developer.html"><button>Register as Developer</button></a>
+    <a href="/hire-developer.html"><button>Register as Company</button></a>
+
+</body>
+
+</html>

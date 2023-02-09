@@ -1,13 +1,25 @@
 const fs = require("fs");
-const path = require("path");
 
 const homePage = (req, res) => {
   res.send("Homepagenew");
 };
 
 const hireDeveloper = (req, res) => {
-  res.send("Hire Developer");
+  fs.readFile("companies.json", "utf-8", (err, data) => {
+    if (err) throw err;
+    let existingData = JSON.parse(data);
+    existingData.push(req.body);
+    existingData = JSON.stringify(existingData);
+
+    fs.writeFile("companies.json", existingData, (err) => {
+      if (err) throw err;
+      console.log("Data appended to file");
+    });
+  });
+
+  return res.json({ message: "form submitted" });
 };
+
 const registerDeveloper = (req, res) => {
   fs.readFile("developers.json", "utf-8", (err, data) => {
     if (err) throw err;
@@ -21,7 +33,7 @@ const registerDeveloper = (req, res) => {
     });
   });
 
-  res.json({ message: "form submitted" });
+  return res.json({ message: "form submitted" });
   //open json file and append it with latest userdata
 };
 const login = (req, res) => {

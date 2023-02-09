@@ -17,9 +17,9 @@
         <li><a href="/login.html">Login</a></li>
     </ul>
 
-    <h2>Register as Developer</h2>
-    <form id="register-dev" action="http://localhost:5001/register-developer" method="post">
-        <label for="name">Full name</label>
+    <h2>Hire a Developer</h2>
+    <form id="register-dev" action="http://localhost:5001/hire-developer" method="post">
+        <label for="name">Company Name</label>
         <input type="text" name="name" id="name">
         <label for="uname">Username</label>
         <input type="text" name="uname" id="uname">
@@ -29,6 +29,8 @@
         <input type="tel" name="phone" id="phone">
         <label for="email">Email</label>
         <input type="email" name="email" id="email">
+        <label for="rate">Rate/hr</label>
+        <input type="number" name="rate" id="rate" />
         <label for="technologies">Choose Techs</label>
         <select id="technologies" name="technologies" multiple>
             <option value="reactjs">React JS</option>

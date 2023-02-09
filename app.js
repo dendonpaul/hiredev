@@ -10,7 +10,7 @@ app.use(express.urlencoded());
 
 //paths
 app.get("/", PageController.homePage);
-app.get("/hire-developer", PageController.hireDeveloper);
+app.post("/hire-developer", PageController.hireDeveloper);
 app.post("/register-developer", PageController.registerDeveloper);
 app.get("/login", PageController.login);
 
