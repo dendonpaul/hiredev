@@ -14,5 +14,37 @@
     "phone": "23432",
     "email": "test@gmail.com",
     "technologies": ["reactjs", "nodejs", "expressjs"]
+  },
+  {
+    "name": "Devloper 3",
+    "uname": "dev3",
+    "pword": "password",
+    "phone": "123213",
+    "email": "fds@gmail.com",
+    "technologies": ["nodejs", "expressjs"]
+  },
+  {
+    "name": "Devloper 45",
+    "uname": "dev4",
+    "pword": "password",
+    "phone": "123213",
+    "email": "fds@gmail.com",
+    "technologies": ["reactjs"]
+  },
+  {
+    "name": "Devloper 6",
+    "uname": "dev6",
+    "pword": "rerf",
+    "phone": "123213",
+    "email": "fds@gmail.com",
+    "technologies": ["reactjs"]
+  },
+  {
+    "name": "Devloper 7",
+    "uname": "dev7",
+    "pword": "",
+    "phone": "123213",
+    "email": "fds@gmail.com",
+    "technologies": ["reactjs"]
   }
 ]

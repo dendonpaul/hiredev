@@ -14,4 +14,7 @@ app.post("/hire-developer", PageController.hireDeveloper);
 app.post("/register-developer", PageController.registerDeveloper);
 app.get("/login", PageController.login);
 
+//Fetch Developers
+app.get("/dev-list", PageController.devList);
+
 app.listen(5001, () => console.log("Server running on 5001"));

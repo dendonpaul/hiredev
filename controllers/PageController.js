@@ -41,4 +41,10 @@ const login = (req, res) => {
   res.send("Login Page");
 };
 
-module.exports = { homePage, hireDeveloper, registerDeveloper, login };
+//Dev list
+const devList = async (req, res) => {
+  const devData = fs.readFileSync("developers.json");
+  res.send(devData);
+};
+
+module.exports = { homePage, hireDeveloper, registerDeveloper, login, devList };
