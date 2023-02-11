@@ -16,5 +16,6 @@ app.get("/login", PageController.login);
 
 //Fetch Developers
 app.get("/dev-list", PageController.devList);
+app.get("/comp-list", PageController.compList);
 
 app.listen(5001, () => console.log("Server running on 5001"));

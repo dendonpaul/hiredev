@@ -46,5 +46,17 @@ const devList = async (req, res) => {
   const devData = fs.readFileSync("developers.json");
   res.send(devData);
 };
+//Comp list
+const compList = async (req, res) => {
+  const compData = fs.readFileSync("companies.json");
+  res.send(compData);
+};
 
-module.exports = { homePage, hireDeveloper, registerDeveloper, login, devList };
+module.exports = {
+  homePage,
+  hireDeveloper,
+  registerDeveloper,
+  login,
+  devList,
+  compList,
+};

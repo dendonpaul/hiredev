@@ -52,3 +52,27 @@ if (devList) {
     });
   });
 }
+
+//Fetch company List
+const compList = document.getElementById("compList");
+if (compList) {
+  console.log(compList);
+  axios.get("http://localhost:5001/comp-list").then((response) => {
+    console.log(response);
+    response.data.forEach((res) => {
+      compList.innerHTML += `
+      <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${res.name}</h5>
+                        <p class="card-text">${res.phone}</p>
+                        <p class="card-text">${res.email}</p>
+                        <a href="#"><i class="fa-brands fa-github"></i></a><br />
+                        <a href="#" class="btn btn-primary">Send Request</a>
+                    </div>
+                </div>
+            </div>
+      `;
+    });
+  });
+}
