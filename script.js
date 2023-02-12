@@ -76,3 +76,26 @@ if (compList) {
     });
   });
 }
+
+//Login function
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+  console.log(loginForm);
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let form = e.currentTarget;
+    let url = form.action;
+    let formData = new FormData(form);
+
+    let formDataJson = Object.fromEntries(formData.entries());
+
+    axios.post(url, formDataJson).then((response) => {
+      console.log(response);
+      if (response.status === 200 && response.data.message === "success") {
+        window.location.href = `/${response.data.redirect}-landing.html`;
+      } else {
+        document.getElementById("error").textContent = response.data.message;
+      }
+    });
+  });
+}

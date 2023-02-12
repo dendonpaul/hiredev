@@ -38,7 +38,24 @@ const registerDeveloper = (req, res) => {
   //open json file and append it with latest userdata
 };
 const login = (req, res) => {
-  res.send("Login Page");
+  const { username, password, role } = req.body;
+  fs.readFile(`${role}.json`, (err, data) => {
+    if (err) console.log(err);
+    let dataString = JSON.parse(Buffer.from(data).toString());
+    // console.log(dataString);
+    let validData = dataString.filter((d) => {
+      return username === d.uname;
+    });
+    console.log(validData);
+    //verify uname/pass
+    if (validData.length > 0 && password === validData[0].pword) {
+      res.status(200).json({ message: "success", redirect: role });
+    } else {
+      res.json({ message: "invalid credentials" });
+    }
+  });
+
+  // res.send("login page");
 };
 
 //Dev list
