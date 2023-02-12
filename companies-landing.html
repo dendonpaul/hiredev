@@ -19,10 +19,46 @@
 <body>
 
     <div class="container text-center">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postjob">Post a Job</button>
         <div class="row align-items-start" id="devList">
 
         </div>
     </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="postjob" tabindex="-1" aria-labelledby="postjob" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Post a Job</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-dev" action="http://localhost:5001/post-job">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Company Name">
+                            <label for="name">Company Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="jtitle" name="jtitle" placeholder="Job Title">
+                            <label for="jtitle">Job Title</label>
+                        </div>
+                        <label for="technologies">Technologies</label>
+                        <select multiple id="technologies" name="technologies" class="form-control">
+                            <option value="reactjs">ReactJS</option>
+                            <option value="nodejs">NodeJS</option>
+                            <option value="expressjs">ExpressJS</option>
+                        </select>
+                        <input type="submit" value="Publish" id="registerBtn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal end-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"
         integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw=="

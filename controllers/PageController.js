@@ -68,7 +68,27 @@ const compList = async (req, res) => {
   const compData = fs.readFileSync("companies.json");
   res.send(compData);
 };
+//Job list
+const jobList = async (req, res) => {
+  const jobData = fs.readFileSync("joblist.json");
+  res.send(jobData);
+};
 
+//Post Job
+const postJob = async (req, res) => {
+  // const { name, jtitle, technologies } = req.body;
+  fs.readFile("joblist.json", "utf-8", (err, data) => {
+    if (err) throw err;
+    let existingData = JSON.parse(data);
+    existingData.push(req.body);
+    existingData = JSON.stringify(existingData);
+
+    fs.writeFile("joblist.json", existingData, (err) => {
+      if (err) throw err;
+      console.log("Data appended to file");
+    });
+  });
+};
 module.exports = {
   homePage,
   hireDeveloper,
@@ -76,4 +96,6 @@ module.exports = {
   login,
   devList,
   compList,
+  postJob,
+  jobList,
 };
