@@ -2,7 +2,7 @@
   {
     "name": "Developer 1",
     "uname": "dev1",
-    "pword": "",
+    "pword": "password",
     "phone": "23432",
     "email": "test@gmail.com",
     "technologies": ["reactjs", "nodejs", "expressjs"]
