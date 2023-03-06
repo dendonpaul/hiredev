@@ -1,41 +1,54 @@
 const fs = require("fs");
 
+const DevModel = require("../models/DevModel");
+const CompModel = require("../models/CompModel");
+
 const homePage = (req, res) => {
   res.send("Homepagenew");
 };
 
-const hireDeveloper = (req, res) => {
-  fs.readFile("companies.json", "utf-8", (err, data) => {
-    if (err) throw err;
-    console.log(data);
-    let existingData = JSON.parse(data);
-    existingData.push(req.body);
-    existingData = JSON.stringify(existingData);
+const hireDeveloper = async (req, res) => {
+  const saveComp = new CompModel(req.body);
+  console.log(saveComp);
 
-    fs.writeFile("companies.json", existingData, (err) => {
-      if (err) throw err;
-      console.log("Data appended to file");
-    });
-  });
+  //check if user already exists
+  const uname = await CompModel.exists({ uname: saveComp.uname });
 
-  return res.json({ message: "form submitted" });
+  if (uname) {
+    return res
+      .status(301)
+      .json({ message: "User already exists. try another" });
+  }
+
+  try {
+    const savedComp = await saveComp.save();
+    if (savedComp) {
+      res.status(200).json({ message: "User created successfully" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-const registerDeveloper = (req, res) => {
-  fs.readFile("developers.json", "utf-8", (err, data) => {
-    if (err) throw err;
-    let existingData = JSON.parse(data);
-    existingData.push(req.body);
-    existingData = JSON.stringify(existingData);
-
-    fs.writeFile("developers.json", existingData, (err) => {
-      if (err) throw err;
-      console.log("Data appended to file");
+const registerDeveloper = async (req, res) => {
+  const saveDev = new DevModel(req.body);
+  console.log(saveDev);
+  //check if username exists
+  const uname = await DevModel.exists({ uname: saveDev.uname });
+  if (uname) {
+    return res.status(301).json({
+      message: "username already exists. Try using different username",
     });
-  });
+  }
 
-  return res.json({ message: "form submitted" });
-  //open json file and append it with latest userdata
+  try {
+    const savedDev = await saveDev.save();
+    if (savedDev) {
+      res.status(200).json({ message: "Developer Registered Successfully" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 const login = (req, res) => {
   const { username, password, role } = req.body;

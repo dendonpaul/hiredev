@@ -1,6 +1,8 @@
 // const axios = require("axios");
 const register_dev = document.getElementById("register-dev");
+const errors = document.getElementById("error");
 
+//Regsiter Devs
 if (register_dev) {
   register_dev.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -10,7 +12,7 @@ if (register_dev) {
     let formData = new FormData(form);
 
     let technologies = formData.getAll("technologies");
-    console.log(technologies);
+    // console.log(technologies);
     formData.delete("technologies");
 
     let formDataJson = Object.fromEntries(formData.entries());
@@ -22,14 +24,17 @@ if (register_dev) {
       .post(url, formDataJson)
       .then(function (response) {
         console.log(response.data.message);
-        //   e.target.innerHTML = response.data.message;
-        window.location.href = "login.html";
+        error.textContent = response.data.message;
+        // window.location.href = "login.html";
       })
       .catch(function (error) {
-        console.log(error);
+        errors.innerText = error.response.data.message;
       });
   });
 }
+
+//Register Companies
+
 //Fetch Developers List
 const devList = document.getElementById("devList");
 if (devList) {
