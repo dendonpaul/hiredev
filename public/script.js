@@ -149,7 +149,6 @@ if (loginForm) {
     let formDataJson = Object.fromEntries(formData.entries());
 
     axios.post(url, formDataJson).then((response) => {
-      console.log(response);
       if (response.status === 200 && response.data.message === "success") {
         window.location.href = `/${response.data.redirect}-landing.html`;
       } else {

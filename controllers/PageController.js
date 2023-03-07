@@ -1,4 +1,6 @@
 const fs = require("fs");
+const path = require("path");
+path.join(__dirname + "/public");
 
 const DevModel = require("../models/DevModel");
 const CompModel = require("../models/CompModel");
@@ -55,12 +57,16 @@ const login = async (req, res) => {
   const { username, password, role } = req.body;
   let TheModel;
   role === "developers" ? (TheModel = DevModel) : (TheModel = CompModel);
-  const userExists = await TheModel.find({ uname: username });
+  const userExists = await TheModel.findOne({ uname: username });
   console.log(userExists);
   //working till above
 
   //compare password
-
+  if (password === (await userExists.password)) {
+    res.status(200).json({ message: "success", redirect: role });
+  } else {
+    res.json({ message: "Invalid Credentials" });
+  }
   //json file method
   // fs.readFile(`${role}.json`, (err, data) => {
   //   if (err) console.log(err);
