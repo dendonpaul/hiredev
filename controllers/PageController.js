@@ -6,7 +6,7 @@ const CompModel = require("../models/CompModel");
 const homePage = (req, res) => {
   res.send("Homepagenew");
 };
-
+//Register company
 const hireDeveloper = async (req, res) => {
   const saveComp = new CompModel(req.body);
   console.log(saveComp);
@@ -29,7 +29,7 @@ const hireDeveloper = async (req, res) => {
     console.log(error);
   }
 };
-
+//Register Developers
 const registerDeveloper = async (req, res) => {
   const saveDev = new DevModel(req.body);
   console.log(saveDev);
@@ -50,23 +50,33 @@ const registerDeveloper = async (req, res) => {
     console.log(error);
   }
 };
-const login = (req, res) => {
+//Login
+const login = async (req, res) => {
   const { username, password, role } = req.body;
-  fs.readFile(`${role}.json`, (err, data) => {
-    if (err) console.log(err);
-    let dataString = JSON.parse(Buffer.from(data).toString());
-    // console.log(dataString);
-    let validData = dataString.filter((d) => {
-      return username === d.uname;
-    });
-    console.log(validData);
-    //verify uname/pass
-    if (validData.length > 0 && password === validData[0].pword) {
-      res.status(200).json({ message: "success", redirect: role });
-    } else {
-      res.json({ message: "invalid credentials" });
-    }
-  });
+  let TheModel;
+  role === "developers" ? (TheModel = DevModel) : (TheModel = CompModel);
+  const userExists = await TheModel.find({ uname: username });
+  console.log(userExists);
+  //working till above
+
+  //compare password
+
+  //json file method
+  // fs.readFile(`${role}.json`, (err, data) => {
+  //   if (err) console.log(err);
+  //   let dataString = JSON.parse(Buffer.from(data).toString());
+  //   // console.log(dataString);
+  //   let validData = dataString.filter((d) => {
+  //     return username === d.uname;
+  //   });
+  //   console.log(validData);
+  //   //verify uname/pass
+  //   if (validData.length > 0 && password === validData[0].pword) {
+  //     res.status(200).json({ message: "success", redirect: role });
+  //   } else {
+  //     res.json({ message: "invalid credentials" });
+  //   }
+  // });
 
   // res.send("login page");
 };
