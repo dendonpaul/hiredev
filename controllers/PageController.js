@@ -4,6 +4,7 @@ path.join(__dirname + "/public");
 
 const DevModel = require("../models/DevModel");
 const CompModel = require("../models/CompModel");
+const JobsModel = require("../models/JobsModel");
 
 const homePage = (req, res) => {
   res.send("Homepagenew");
@@ -89,34 +90,44 @@ const login = async (req, res) => {
 
 //Dev list
 const devList = async (req, res) => {
-  const devData = fs.readFileSync("developers.json");
-  res.send(devData);
+  // const devData = DevModel.find({});
+  // console.log(devData);
+  DevModel.find({}).then(function (users) {
+    res.send(users);
+    // console.log(users);
+  });
+  // res.json(devData);
 };
 //Comp list
 const compList = async (req, res) => {
-  const compData = fs.readFileSync("companies.json");
-  res.send(compData);
+  CompModel.find({}).then((comp) => {
+    res.send(comp);
+  });
 };
 //Job list
 const jobList = async (req, res) => {
-  const jobData = fs.readFileSync("joblist.json");
-  res.send(jobData);
+  JobsModel.find({}).then((jobs) => {
+    res.send(jobs);
+  });
 };
 
 //Post Job
 const postJob = async (req, res) => {
-  // const { name, jtitle, technologies } = req.body;
-  fs.readFile("joblist.json", "utf-8", (err, data) => {
-    if (err) throw err;
-    let existingData = JSON.parse(data);
-    existingData.push(req.body);
-    existingData = JSON.stringify(existingData);
+  const { name, jtitle, technologies } = req.body;
+  const saveJob = new JobsModel(req.body);
+  saveJob.save().then(res.json({ message: "Job saved successfully" }));
 
-    fs.writeFile("joblist.json", existingData, (err) => {
-      if (err) throw err;
-      console.log("Data appended to file");
-    });
-  });
+  //File Method
+  // fs.readFile("joblist.json", "utf-8", (err, data) => {
+  //   if (err) throw err;
+  //   let existingData = JSON.parse(data);
+  //   existingData.push(req.body);
+  //   existingData = JSON.stringify(existingData);
+  //   fs.writeFile("joblist.json", existingData, (err) => {
+  //     if (err) throw err;
+  //     console.log("Data appended to file");
+  //   });
+  // });
 };
 module.exports = {
   homePage,
