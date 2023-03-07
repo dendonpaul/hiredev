@@ -1,5 +1,6 @@
 // const axios = require("axios");
 const register_dev = document.getElementById("register-dev");
+const register_comp = document.getElementById("register-comp");
 const errors = document.getElementById("error");
 
 //Regsiter Devs
@@ -33,7 +34,37 @@ if (register_dev) {
   });
 }
 
-//Register Companies
+//register Companies
+if (register_comp) {
+  register_comp.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let form = e.currentTarget;
+    let url = form.action;
+    let formData = new FormData(form);
+
+    let technologies = formData.getAll("technologies");
+    // console.log(technologies);
+    formData.delete("technologies");
+
+    let formDataJson = Object.fromEntries(formData.entries());
+
+    formDataJson.technologies = technologies;
+    // console.log(formDataJson);
+
+    axios
+      .post(url, formDataJson)
+      .then(function (response) {
+        console.log(response.data.message);
+        errors.textContent = response.data.message;
+        // window.location.href = "login.html";
+      })
+      .catch(function (error) {
+        console.log(error.response.data.message);
+        errors.textContent = error.response.data.message;
+      });
+  });
+}
 
 //Fetch Developers List
 const devList = document.getElementById("devList");
